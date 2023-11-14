@@ -41,3 +41,14 @@ ADDITIONAL_SYSTEM_PROPERTIES  += \
     org.franxx.build_date_utc=$(FRANXX_BUILD_DATE_UTC) \
     org.franxx.build_type=$(FRANXX_BUILD_TYPE) \
     org.franxx.build_security_patch=$(FRANXX_SECURITY_PATCH)
+
+# Signing
+ifeq (user,$(TARGET_BUILD_VARIANT))
+ifneq (,$(wildcard vendor/franxx/signing/keys/releasekey.pk8))
+PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/franxx/signing/keys/releasekey
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.oem_unlock_supported=1
+endif
+ifneq (,$(wildcard vendor/franxx/signing/keys/otakey.x509.pem))
+PRODUCT_OTA_PUBLIC_KEYS := vendor/franxx/signing/keys/otakey.x509.pem
+endif
+endif
