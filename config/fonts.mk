@@ -58,4 +58,4 @@ PRODUCT_PACKAGES += \
     Barlow-Medium.ttf
 
 PRODUCT_COPY_FILES += \
-    vendor/aosp/fonts/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml
+    vendor/franxx/fonts/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml

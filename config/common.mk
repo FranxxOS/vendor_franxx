@@ -1,7 +1,7 @@
 # Branding
-$(call inherit-product, vendor/aosp/config/branding.mk)
+$(call inherit-product, vendor/franxx/config/branding.mk)
 
-PRODUCT_BRAND ?= PixelExperience
+PRODUCT_BRAND ?= FranxxOS
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -46,12 +46,12 @@ endif
 
 # Some permissions
 PRODUCT_COPY_FILES += \
-    vendor/aosp/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml \
-    vendor/aosp/config/permissions/org.lineageos.health.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.lineageos.health.xml \
+    vendor/franxx/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml \
+    vendor/franxx/config/permissions/org.lineageos.health.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.lineageos.health.xml \
 
 # Copy all custom init rc files
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init/init.pixelexperience-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.pixelexperience-updater.rc
+    vendor/franxx/prebuilt/common/etc/init/init.franxx-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.franxx-updater.rc
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -67,7 +67,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Power whitelist
 PRODUCT_COPY_FILES += \
-    vendor/aosp/config/permissions/custom-power-whitelist.xml:system/etc/sysconfig/custom-power-whitelist.xml
+    vendor/franxx/config/permissions/custom-power-whitelist.xml:system/etc/sysconfig/custom-power-whitelist.xml
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
@@ -97,13 +97,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Media
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     media.recorder.show_manufacturer_and_model=true
-
-# Overlays
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-    vendor/aosp/overlay
-
-PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/aosp/overlay/common
 
 # TouchGestures
 PRODUCT_PACKAGES += \
@@ -181,13 +174,6 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.boot.vendor.overlay.theme=com.android.internal.systemui.navbar.gestural
 
-# Pixel customization
-TARGET_SUPPORTS_GOOGLE_RECORDER ?= true
-TARGET_INCLUDE_STOCK_ARCORE ?= true
-TARGET_INCLUDE_LIVE_WALLPAPERS ?= true
-TARGET_SUPPORTS_QUICK_TAP ?= false
-TARGET_SUPPORTS_CALL_RECORDING ?= true
-
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED ?= true
 ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
@@ -203,25 +189,10 @@ endif
 PRODUCT_PACKAGES += \
     NexusLauncherResOverlay
 
-# Audio
-$(call inherit-product, vendor/aosp/config/audio.mk)
-
 # Bootanimation
-$(call inherit-product, vendor/aosp/config/bootanimation.mk)
+$(call inherit-product, vendor/franxx/config/bootanimation.mk)
 
 # Fonts
-$(call inherit-product, vendor/aosp/config/fonts.mk)
-
-# GMS
-$(call inherit-product, vendor/gms/products/gms.mk)
-
-# OTA
-#$(call inherit-product, vendor/aosp/config/ota.mk)
-
-# RRO Overlays
-$(call inherit-product, vendor/aosp/config/rro_overlays.mk)
-
-# Pixel Framework
-$(call inherit-product-if-exists, vendor/pixel-framework/config.mk)
+$(call inherit-product, vendor/franxx/config/fonts.mk)
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
