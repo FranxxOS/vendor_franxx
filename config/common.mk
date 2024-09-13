@@ -196,4 +196,7 @@ $(call inherit-product, vendor/franxx/config/bootanimation.mk)
 # Fonts
 $(call inherit-product, vendor/franxx/config/fonts.mk)
 
+# GMS
+$(call inherit-product, vendor/gms/gms_full.mk)
+
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
